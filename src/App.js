@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import MainPage from './pages/MainPage';
+import CreateBlog from './pages/CreateBlog';
+import Navbar from './Navbar';
+import './pages/style.css';
+import ManageBlogs from './pages/ManageBlogs';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    let Component
+    switch (window.location.pathname)
+    {
+        case "/":
+            Component = <MainPage />;
+            break
+        case "/CreateBlog":
+            Component = <CreateBlog />;
+            break
+        case "/ManageBlogs":
+            Component = <ManageBlogs />;
+            break
+    }
+
+    return (
+        <>
+        <Navbar />
+        { Component }
+
+        </>
+        
+    )
 }
-
-export default App;
